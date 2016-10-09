@@ -6,8 +6,7 @@ public class Task1 {
 		// int[] count = {1,2,10,4,28,13,23,48};
 
 		int[][] countTwo = null;
-		int n = 5;
-		int x = 0, y = 0, z = 0, m = 0, q = 0;
+
 
 		// while (x <25){
 		// x++;
@@ -80,7 +79,7 @@ public class Task1 {
 //	Перевернуть массив
 	
 	int[] b = { 1, 10, 5, 0, 50 };
-	int bufer = 0;
+
 
 	for(int i=b.length; i>=0; i--){
 		for(int j=0; j<b.length; j++){

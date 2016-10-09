@@ -3,19 +3,22 @@ package com.gafur.app.luckyticket;
 public class ArraySpiral {
 
 	public static void main(String[] args) {
-		int[][] array = new int[5][5];
-		int c = 0;
+		final int N = 7;
+		
+		int[][] array = new int[N][N];
+		
 		int x = 0;
 		int y = 0;
+		int z = 0;
 
-		while (c < 4) {
-			while (y < 5) {
+		while (z < N) {
+			while (y < N) {
 				array[x][y] = y;
 				y++;
 			}
-			if (y == 5) {
+			if (y == N) {
 				x++;
-				if (x == 5) {
+				if (x == N) {
 					break;
 				}
 				while (y > 0) {
@@ -23,7 +26,7 @@ public class ArraySpiral {
 					array[x][y] = y;
 				}
 			}
-			c++;
+			z++;
 			x++;
 		}
 

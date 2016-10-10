@@ -3,7 +3,7 @@ package com.gafur.homework.week_1;
 public class Bags {
 
 	private static int[] a = { 3, 2, 9, 11, 7, 5, 4, 8, 3, 50 };
-	public static int best = differencePair(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9]);
+	public static int best = 0;
 
 	public static void main(String[] args) {
 
@@ -17,10 +17,14 @@ public class Bags {
 									for (int i8 = 0; i8 < a.length; i8++) {
 										for (int i9 = 0; i9 < a.length; i9++) {
 											for (int i10 = 0; i10 < a.length; i10++) {
-												int current = differencePair(a[i1], a[i2], a[i3], a[i4], a[i5], a[i6],
-														a[i7], a[i8], a[i9], a[i10]);
+												int current = (a[i1] + a[i2] + a[i3] + a[i4] + a[i5]) - (a[i6] +
+														a[i7] + a[i8] + a[i9] + a[i10]);
+//												System.out.println(current);
+												if(current > 0){
+													best(current);
+												}
 
-												best(current);
+												
 
 											}
 										}
@@ -36,16 +40,8 @@ public class Bags {
 		System.out.println(best);
 	}
 
-	public static int differencePair(int a, int b, int c, int d, int e, int f, int g, int k, int n, int m) {
-		int difference = (a + b + c + d + e) - (f + g + k + n + m);
-		return difference;
-	}
-
 	public static int best(int current) {
 
-		if (best < 0) {
-			best=0;
-		}
 		if (best > current) {
 			best = current;
 		}

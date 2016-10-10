@@ -1,4 +1,4 @@
-package com.gafur.app.luckyticket;
+package com.gafur.lessons.week_1;
 
 public class Task2 {
 

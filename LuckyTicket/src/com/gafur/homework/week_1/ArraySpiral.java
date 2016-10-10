@@ -1,4 +1,4 @@
-package com.gafur.app.luckyticket;
+package com.gafur.homework.week_1;
 
 public class ArraySpiral {
 

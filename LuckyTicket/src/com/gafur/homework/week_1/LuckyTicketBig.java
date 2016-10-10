@@ -1,42 +1,47 @@
-package com.gafur.app.luckyticket;
+package com.gafur.homework.week_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
-public class LuckyTicket {
+public class LuckyTicketBig {
 	public static void main(String[] args) throws IOException {
-		System.out.println("Hi");
 		int luckyCount = 0;
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		String input = reader.readLine();
-		int ticketNumber = Integer.parseInt(input);
+		long ticketNumber = Long.parseLong(reader.readLine());
 		System.out.println(luckyCount(ticketNumber));
 
-		for (int i = 0; i < 1000000; i++) {
+		for (long i = 0; i < 1000000000000L; i++) {
 			if (luckyCount(i)) {
 				luckyCount++;
 			}
 		}
 		System.out.println(luckyCount);
+
 	}
 
-	public static String addZeros(int number) {
-		DecimalFormat zeroFormat = new DecimalFormat("000000");
+	public static String addZeros(long number) {
+		DecimalFormat zeroFormat = new DecimalFormat("000000000000");
 		return zeroFormat.format(number) + "";
 	}
 
-	public static boolean luckyCount(int number) {
+	public static boolean luckyCount(long number) {
+		int leftSum = 0;
+		int rightSum = 0;
 
 		char[] numberChar = addZeros(number).toCharArray();
-		int[] numberInt = new int[6];
+		int[] numberInt = new int[12];
 		for (int i = 0; i < numberChar.length; i++) {
 			numberInt[i] = Character.getNumericValue(numberChar[i]);
 		}
 
-		int leftSum = numberInt[0] + numberInt[1] + numberInt[2];
-		int rightSum = numberInt[3] + numberInt[4] + numberInt[5];
+		for (int i = 0; i < 6; i++) {
+			leftSum = leftSum + numberInt[i];
+		}
+		for (int i = 11; i > 5; i--) {
+			rightSum = rightSum + numberInt[i];
+		}
 
 		if (leftSum == rightSum) {
 			return true;

@@ -3,39 +3,8 @@ package com.gafur.lessons.week_1;
 public class Task1 {
 
 	public static void main(String[] args) {
-		// int[] count = {1,2,10,4,28,13,23,48};
 
 		int[][] countTwo = null;
-
-
-		// while (x <25){
-		// x++;
-		// while->
-		// while down
-		// while <-
-		// while up
-
-		// while (x <25){
-		// x++;
-		// while(y<5){
-		// y++;
-		//
-		// while(z<5){
-		// z++;
-		//
-		// while(m<5){
-		// m++;
-		//
-		// while(q<5){
-		// q++;
-		// countTwo[y][z] = q;
-		// }
-		// }
-		// }
-		// }
-		//
-		//
-		// }
 
 		System.out.println(countTwo);
 

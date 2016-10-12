@@ -1,0 +1,10 @@
+package com.gafur.homework.week_1;
+
+public class MergeRecursion {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

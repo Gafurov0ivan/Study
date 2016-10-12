@@ -3,22 +3,22 @@ package com.gafur.homework.week_1;
 public class ArraySpiral {
 
 	public static void main(String[] args) {
-		final int n = 7;
+		final int N = 7;
 		
-		int[][] array = new int[n][n];
+		int[][] array = new int[N][N];
 		
 		int x = 0;
 		int y = 0;
 		int z = 0;
 
-		while (z < n) {
-			while (y < n) {
+		while (z < N) {
+			while (y < N) {
 				array[x][y] = y;
 				y++;
 			}
-			if (y == n) {
+			if (y == N) {
 				x++;
-				if (x == n) {
+				if (x == N) {
 					break;
 				}
 				while (y > 0) {

@@ -11,7 +11,6 @@ public class MergeRecursion {
 		for (int item : sortArray) {
 			System.out.println(item);
 		}
-
 	}
 
 	public static int[] mergeSort(int[] array, int newLength) {
@@ -26,17 +25,10 @@ public class MergeRecursion {
 		array = sort(newArrayOne, newArrayTwo);
 
 		if (newLength >= 1) {
-			
 			mergeSort(newArrayOne, newArrayOne.length / 2);
-			
 			mergeSort(newArrayTwo, newArrayTwo.length / 2);
-
-			
-
 		}
-
 		return array;
-
 	}
 
 	public static int[] sort(int[] arrayFirst, int[] arraySecond) {

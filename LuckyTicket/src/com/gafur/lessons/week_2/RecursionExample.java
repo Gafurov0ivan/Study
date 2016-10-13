@@ -1,7 +1,7 @@
 package com.gafur.lessons.week_2;
 
 public class RecursionExample {
-//	Сколько можно положить плиток на 2n 
+//	Сколько можно положить плиток на 2n, велечиной 2
 	
 //	1 0 0 0 0 0   - либо так 
 //	1 0 0 0 0 0
@@ -52,7 +52,12 @@ public class RecursionExample {
 
 	public static void main(String[] args) {
 		rec(0,0,0);
+		
+		m(myEnum.JANUARY);
 
+	}
+	private static void m(myEnum a){
+		
 	}
 
 }

@@ -11,32 +11,27 @@ public class MergeArray {
 	}
 
 	public static int[] mergeSort(int[] first, int[] second) {
-		int[] third = new int[first.length + second.length];
-		
-			for (int n = 0, m = 0, i = 0; n < first.length && m < second.length && i < third.length;) {
+		int[] third = new int[first.length + second.length+1];
+		for (int i = 0; i < third.length; i++) {
+			for (int n = 0, m = 0; n < first.length || m < second.length; n++, m++) {
 				if (first[n] < second[m]) {
 					third[i] = first[n];
-					n++;
+					i++;
+				}
+				if (first[n] > second[m]) {
+					third[i] = second[m];
 					i++;
 				} else {
-					if (first[n] >= second[m]) {
-						if (first[n] > second[m])
-							third[i] = second[m];
-						m++;
+					if (first[n] == second[m]) {
+						third[i] = first[m];
 						i++;
-					}
-					else{if (first[n] == second[m]) {
-							third[i] = first[n];
-							n++;
-							i++;
-							third[i] = second[m];
-							m++;
-							i++;
-						}
+						third[i] = second[m];
 					}
 				}
+
 			}
-		
+
+		}
 		return third;
 	}
 }

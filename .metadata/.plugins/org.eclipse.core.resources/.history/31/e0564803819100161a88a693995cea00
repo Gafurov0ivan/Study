@@ -25,7 +25,7 @@ public class MergeArray {
 						m++;
 						i++;
 					}
-					else{if (first[n] == second[m]) {
+						if (first[n] == second[m]) {
 							third[i] = first[n];
 							n++;
 							i++;
@@ -33,7 +33,6 @@ public class MergeArray {
 							m++;
 							i++;
 						}
-					}
 				}
 			}
 		

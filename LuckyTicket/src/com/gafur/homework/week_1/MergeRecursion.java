@@ -1,63 +1,54 @@
 package com.gafur.homework.week_1;
 
 public class MergeRecursion {
-	private static int[] newArrayOne = null;
-	private static int[] newArrayTwo = null;
 
 	public static void main(String[] args) {
 		int[] array = { 4, 7, 5, 1, 0, 1, 35, 0 };
-
-		int[] sortArray = mergeSort(array, array.length);
+		int[] sortArray = mergeSort(array);
 		for (int item : sortArray) {
 			System.out.println(item);
 		}
 	}
 
-	public static int[] mergeSort(int[] array, int newLength) {
-		newArrayOne = new int[array.length / 2];
-		newArrayTwo = new int[array.length / 2];
-		for (int i = 0; i < newArrayOne.length; i++) {
-			newArrayOne[i] = array[i];
-		}
-		for (int j = array.length / 2, i = 0; i < newArrayTwo.length; j++, i++) {
-			newArrayTwo[i] = array[j];
-		}
-		array = sort(newArrayOne, newArrayTwo);
+	public static int[] mergeSort(int[] array) {
 
-		if (newLength >= 1) {
-			mergeSort(newArrayOne, newArrayOne.length / 2);
-			mergeSort(newArrayTwo, newArrayTwo.length / 2);
+		if (array.length > 1) {
+
+			int[] newArrayOne = new int[array.length / 2];
+			int[] newArrayTwo = new int[array.length / 2];
+
+			for (int i = 0; i < newArrayOne.length; i++) {
+				newArrayOne[i] = array[i];
+			}
+			mergeSort(newArrayOne);
+			for (int j = array.length / 2, i = 0; i < newArrayTwo.length; j++, i++) {
+				newArrayTwo[i] = array[j];
+			}
+			mergeSort(newArrayTwo);
+			array = sort(array, newArrayOne, newArrayTwo);
 		}
 		return array;
 	}
 
-	public static int[] sort(int[] arrayFirst, int[] arraySecond) {
-		int[] thirdArray = new int[arrayFirst.length + arraySecond.length];
-		int firstCapacity = 0;
-		int secondCapacity = 0;
-		for (int i = 0; i < thirdArray.length; i++) {
-			if (firstCapacity < arrayFirst.length && secondCapacity < arraySecond.length) {
-				if (arrayFirst[firstCapacity] <= arraySecond[secondCapacity]) {
-					thirdArray[i] = arrayFirst[firstCapacity];
-					firstCapacity++;
-				}
+	public static int[] sort(int[] result, int[] a, int[] b) {
+		result = new int[a.length + b.length];
+		int aIndex = 0;
+		int bIndex = 0;
 
-				else {
-					thirdArray[i] = arraySecond[secondCapacity];
-					secondCapacity++;
+		for (int i = 0; i < result.length; i++) {
+			result[i] = a[aIndex] < b[bIndex] ? a[aIndex++] : b[bIndex++];
+			if (aIndex == a.length) {
+				while (bIndex < b.length) {
+					result[++i] = b[bIndex++];
 				}
 			} else {
-				if (firstCapacity == arrayFirst.length && secondCapacity < arraySecond.length) {
-					thirdArray[i] = arraySecond[secondCapacity];
-					secondCapacity++;
-				}
-				if (secondCapacity == arraySecond.length && firstCapacity < arrayFirst.length) {
-					thirdArray[i] = arrayFirst[firstCapacity];
-					firstCapacity++;
+				if (bIndex == b.length) {
+					while (aIndex < a.length) {
+						result[++i] = a[aIndex++];
+					}
 				}
 			}
-
 		}
-		return thirdArray;
+		return result;
 	}
 }

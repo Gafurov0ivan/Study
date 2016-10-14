@@ -13,6 +13,7 @@ public class Recursion {
 			}
 			return;
 		}
+		
 		rec(sum1 + a[i], sum2, i + 1, a);
 		rec(sum1, sum2 + a[i], i + 1, a);
 	}
@@ -24,7 +25,7 @@ public class Recursion {
 	}
 
 	public static void main(String[] args) {
-		int a[] = { 1500, 2, 9, 11, 7, 5, 4, 8, 3, 50 };
+		int a[] = { 10, 2, 9, 11, 7, 5, 4, 8, 3, 50 };
 		System.out.println(calc(a));
 	}
 

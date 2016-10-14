@@ -13,6 +13,8 @@ public class Task4 {
 		// на больше, меньше
 		if (d1 - d2 > 1e-8) {
 		}
+		int i = 1;
+		System.out.println(i/2);
 	}
 //	Рекурсия
 	public int rec(int i){

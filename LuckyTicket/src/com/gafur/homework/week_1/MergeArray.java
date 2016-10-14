@@ -2,8 +2,8 @@ package com.gafur.homework.week_1;
 
 public class MergeArray {
 	public static void main(String[] args) {
-		int[] first = { -2};
-		int[] second = { -1};
+		int[] first = { -2, 1, 3, 50 };
+		int[] second = { -1, 0, 5, 300 };
 		int[] arraySort = mergeSort(first, second);
 
 		for (int item : arraySort)

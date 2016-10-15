@@ -239,5 +239,4 @@ public class MyArrayList implements List {
 	public ListIterator listIterator(int arg0) {
 		throw new UnsupportedOperationException();
 	}
-
 }

@@ -1,0 +1,36 @@
+package com.gafur.homework.week_2;
+
+public class ChessHorse {
+	static int count = 0;
+	static int N = 25;
+	
+	public static int horseMove(int n){
+		if(n==N){
+			count++;
+		}
+		for(int i = 0; i<N; i++){
+			
+		}
+		
+		
+		
+		
+		return 0;
+	}
+	public static void main(String[] args) {
+		int[][] array = new int[5][5];
+		for(int i = 0; i<array.length; i++){
+			for(int j = 0; j<array.length; j++){
+				array[i][j] = 0;
+			}
+		}
+		for(int i = 0; i<array.length; i++){
+			System.out.println(" ");
+			for(int j = 0; j<array.length; j++){
+				System.out.println(array[i][j] + " ");
+			}
+		}
+		
+	}
+
+}

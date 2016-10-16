@@ -12,7 +12,9 @@ public class MergeRecursion {
 
 	public static int[] mergeSort(int[] array) {
 
-		if (array.length > 1) {
+		if (array.length <= 1) {
+			return array;
+		}
 
 			int[] newArrayOne = new int[array.length / 2];
 			int[] newArrayTwo = new int[array.length / 2];
@@ -20,13 +22,14 @@ public class MergeRecursion {
 			for (int i = 0; i < newArrayOne.length; i++) {
 				newArrayOne[i] = array[i];
 			}
-			mergeSort(newArrayOne);
+			
 			for (int j = array.length / 2, i = 0; i < newArrayTwo.length; j++, i++) {
 				newArrayTwo[i] = array[j];
 			}
+			mergeSort(newArrayOne);
 			mergeSort(newArrayTwo);
 			array = sort(array, newArrayOne, newArrayTwo);
-		}
+		
 		return array;
 	}
 

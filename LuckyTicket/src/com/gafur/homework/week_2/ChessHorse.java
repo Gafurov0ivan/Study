@@ -13,7 +13,7 @@ public class ChessHorse {
 			for (int j = y; j < m - 1; j += 2) {
 				array[i][j] = 1;
 				count++;
-				horseMove(j,i, n, array);
+				horseMove(j, i, n, array);
 				array[i][j] = 0;
 			}
 		}
@@ -22,16 +22,15 @@ public class ChessHorse {
 
 	public static void main(String[] args) {
 		int[][] array = new int[5][5];
-		
-		array  = horseMove(0,0,n, array);
 
-		for(int i = 0; i<array.length; i++){
+		array = horseMove(0, 0, n, array);
+
+		for (int i = 0; i < array.length; i++) {
 			System.out.println(" ");
-			for(int j = 0; j<array.length; j++){
+			for (int j = 0; j < array.length; j++) {
 				System.out.print(array[i][j] + " ");
 			}
 		}
-		
 	}
 
 }

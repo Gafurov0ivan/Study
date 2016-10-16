@@ -29,16 +29,13 @@ public class ArrayMinThree {
 						minThree = minTwo;
 					}
 					minTwo = bufer;
-				}
-				else{
+				} else {
 					if (minThree >= bufer) {
-					minThree = bufer;
-				}
+						minThree = bufer;
+					}
 				}
 			}
-
 		}
 		System.out.println(minOne + " " + minTwo + " " + minThree);
 	}
-
 }

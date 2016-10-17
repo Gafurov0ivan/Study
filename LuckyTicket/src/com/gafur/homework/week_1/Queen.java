@@ -5,7 +5,7 @@ public class Queen {
 	private static int count = 0;
 	private static int[][] chessTable = new int[N][N];
 
-	public static void setQueen(int x, int y, int n) {
+	public static void moveQueen(int x, int y, int n) {
 		if (n == N) {
 			return;
 		}
@@ -21,7 +21,7 @@ public class Queen {
 					for (int z = i, q = i; z < N && q < N; z++, q++) {
 						chessTable[z][q] = 1;
 					}
-					setQueen(n + 1, x + 1, y + 2);
+					moveQueen(n + 1, x + 1, y + 2);
 					count++;
 				}
 			}
@@ -29,7 +29,7 @@ public class Queen {
 	}
 
 	public static void main(String[] args) {
-		setQueen(0, 0, 0);
+		moveQueen(0, 0, 0);
 		System.out.println(count);
 	}
 }

@@ -1,36 +1,47 @@
 package com.gafur.homework.week_2;
 
 public class ChessHorse {
-	static int count = 0;
-	static int n = 5;
-	static int m = 5;
+	private static int N = 6;
+	private static int count = 0;
+	private static int bufer = 0;
+	private static int[][] chessTable = new int[5][5];
 
-	public static int[][] horseMove(int x, int y, int n, int[][] array) {
-		if (count == n) {
-			return array;
+	public static void horseMove(int n, int x, int y) {
+		if (n == N) {
+			return;
 		}
-		for (int i = x; i < n - 1; i++) {
-			for (int j = y; j < m - 1; j += 2) {
-				array[i][j] = 1;
-				count++;
-				horseMove(j, i, n, array);
-				array[i][j] = 0;
+		for (int i = x; i < N - 1; i++) {
+			for (int j = y; j < N - 1; j++) {
+				if (chessTable[i][j] == 0) {
+					chessTable[i][j] = 1;
+					System.out.println("i = " + i + " j = " + j);
+					
+					System.out.println(count);
+					horseMove(n + 1, x + 1, y + 2);
+//					horseMove(n + 1, x, y);
+					horseMove(n + 1, x + 1, y - 2);
+//					horseMove(n + 1, x, y);
+					horseMove(n + 1, x - 2 , y - 1);
+					horseMove(n + 1, x - 1 , y + 2);
+					
+					
+					count++;
+				}
 			}
 		}
-		return array;
 	}
 
 	public static void main(String[] args) {
-		int[][] array = new int[5][5];
 
-		array = horseMove(0, 0, n, array);
+		horseMove(0, 0, 0);
 
-		for (int i = 0; i < array.length; i++) {
+		System.out.println(count);
+
+		for (int i = 0; i < chessTable.length; i++) {
 			System.out.println(" ");
-			for (int j = 0; j < array.length; j++) {
-				System.out.print(array[i][j] + " ");
+			for (int j = 0; j < chessTable.length; j++) {
+				System.out.print(chessTable[i][j] + " ");
 			}
 		}
 	}
-
 }

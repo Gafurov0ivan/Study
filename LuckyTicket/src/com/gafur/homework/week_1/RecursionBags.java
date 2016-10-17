@@ -1,6 +1,6 @@
 package com.gafur.homework.week_1;
 
-public class Recursion {
+public class RecursionBags {
 	// Decision of task with bags
 
 	public static int best = Integer.MAX_VALUE;

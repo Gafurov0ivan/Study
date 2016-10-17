@@ -52,6 +52,7 @@ public class RecursionExample {
 
 	public static void main(String[] args) {
 		rec(0,0,0);
+		System.out.println(count);
 		
 		m(myEnum.JANUARY);
 

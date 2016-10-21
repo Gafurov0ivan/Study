@@ -10,19 +10,19 @@ public class ChessHorse {
 		if (n == N) {
 			return;
 		}
-		for (int i = x; i < N - 1; i++) {
+		for (int i = x; i < N - 1; i+=2) {
 			for (int j = y; j < N - 1; j++) {
 				if (chessTable[i][j] == 0) {
 					chessTable[i][j] = 1;
 					System.out.println("i = " + i + " j = " + j);
+				
+					horseMove(n + 1, j+1, i+2);
+					bufer = x;
+					x = y;
+					y = bufer;
 					
 					System.out.println(count);
-					horseMove(n + 1, x + 1, y + 2);
-//					horseMove(n + 1, x, y);
-					horseMove(n + 1, x + 1, y - 2);
-//					horseMove(n + 1, x, y);
-					horseMove(n + 1, x - 2 , y - 1);
-					horseMove(n + 1, x - 1 , y + 2);
+
 					
 					
 					count++;

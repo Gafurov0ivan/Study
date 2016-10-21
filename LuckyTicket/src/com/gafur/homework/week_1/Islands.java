@@ -1,6 +1,7 @@
 package com.gafur.homework.week_1;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class Islands {
 	private int n;

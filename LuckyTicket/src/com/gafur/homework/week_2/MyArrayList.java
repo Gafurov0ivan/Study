@@ -16,7 +16,10 @@ public class MyArrayList<T> implements List<T> {
 	public MyArrayList(int initialCapacity) {
 		if (initialCapacity > 0) {
 			this.array = new Object[initialCapacity];
-		} else {
+		} else if(initialCapacity == 0) {
+			this.array = null;
+		}
+		else{
 			this.array = new Object[16];
 		}
 	}
@@ -29,7 +32,7 @@ public class MyArrayList<T> implements List<T> {
 
 	private void ensureCapacity(int minCapacity) {
 		if (size < minCapacity) {
-			Object[] newArray = new Object[minCapacity];
+			Object[] newArray = new Object[minCapacity*2];
 			System.arraycopy(array, 0, newArray, 0, size);
 			this.array = newArray;
 		}
@@ -156,13 +159,13 @@ public class MyArrayList<T> implements List<T> {
 
 	public int lastIndexOf(Object o) {
 		if (o == null) {
-			for (int i = size - 1; i > 0; i--) {
+			for (int i = size - 1; i >= 0; i--) {
 				if (array[i] == null) {
 					return i;
 				}
 			}
 		} else {
-			for (int i = size - 1; i > 0; i--) {
+			for (int i = size - 1; i >= 0; i--) {
 				if (o.equals(array[i])) {
 					return i;
 				}
@@ -221,6 +224,9 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean retainAll(Collection<?> collection) {
+//		if(collection == null){
+//			return false;
+//		}
 		Object[] newArray = new Object[size];
 		int index = 0;
 		for (int i = 0; i < size; i++) {

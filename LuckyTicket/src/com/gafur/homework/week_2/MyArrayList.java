@@ -1,5 +1,6 @@
 package com.gafur.homework.week_2;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -27,14 +28,16 @@ public class MyArrayList<T> implements List<T> {
 	public void trimToSize() {
 		Object[] newArray = new Object[size * 2];
 		System.arraycopy(array, 0, newArray, 0, size);
-		this.array = newArray;
+		array = newArray;
+		size = array.length;
 	}
 
 	private void ensureCapacity(int minCapacity) {
 		if (size < minCapacity) {
 			Object[] newArray = new Object[minCapacity*2];
 			System.arraycopy(array, 0, newArray, 0, size);
-			this.array = newArray;
+			array = newArray;
+			size = array.length;
 		}
 	}
 
@@ -89,6 +92,9 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean contains(Object o) {
+		if(array == null){
+			return false;
+		}
 		if (o == null) {
 			for (int i = 0; i < size; i++) {
 				if (array[i] == null) {
@@ -127,6 +133,7 @@ public class MyArrayList<T> implements List<T> {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T get(int index) {
 		T t = (T) array[index];
 		return t;
@@ -150,11 +157,7 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean isEmpty() {
-		if (size == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return size == 0;
 	}
 
 	public int lastIndexOf(Object o) {
@@ -214,6 +217,9 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean removeAll(Collection<?> collection) {
+		if(collection == null){
+			return false;
+		}
 		for (int i = 0; i < size; i++) {
 			if (collection.contains(array[i])) {
 				remove(i);
@@ -249,6 +255,7 @@ public class MyArrayList<T> implements List<T> {
 		return size;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T[] toArray() {
 		Object[] newArray = new Object[size];
 		for (int i = 0; i < newArray.length; i++) {
@@ -257,11 +264,14 @@ public class MyArrayList<T> implements List<T> {
 		return (T[]) newArray;
 	}
 
+	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] arr) {
-		for (int i = 0; i < size; i++) {
-			arr[i] = (T) array[i];
-		}
-		return arr;
+		if (arr.length < size)
+            return (T[]) Arrays.copyOf(array, size, arr.getClass());
+        System.arraycopy(array, 0, arr, 0, size);
+        if (arr.length > size)
+            arr[size] = null;
+        return arr;
 	}
 
 	public List subList(int a, int b) {

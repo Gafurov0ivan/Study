@@ -1,4 +1,4 @@
-package com.gafur.lessons.week_3;
+package com.gafur.lessons.week_3.annotations;
 
 import java.lang.reflect.Field;
 

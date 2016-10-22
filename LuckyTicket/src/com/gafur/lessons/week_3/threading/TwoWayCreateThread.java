@@ -2,7 +2,7 @@ package com.gafur.lessons.week_3.threading;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Start {
+public class TwoWayCreateThread {
 
 	public static AtomicInteger count = new AtomicInteger(0);
 
@@ -27,7 +27,6 @@ public class Start {
 					int c = count.get();
 					f = count.compareAndSet(c, c + 100);
 				}
-				// System.out.println("Bonjorno!");
 				// Можем вызывать все методы из Thread через это
 				// Thread.currentThread()
 			}

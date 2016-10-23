@@ -10,11 +10,11 @@ public class Tester {
 		
 		for(String item : classes){
 			Method[] methods = item.getClass().getDeclaredMethods();
-			Object object = new getClass(item);
+//			Object object = new getClass(item);
 			
 			
 			for(Method value : methods){
-				value.invoke(obj, 15);
+//				value.invoke(obj, 15);
 			}
 			
 		}

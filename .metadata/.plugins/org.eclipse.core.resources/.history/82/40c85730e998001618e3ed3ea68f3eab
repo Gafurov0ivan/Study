@@ -1,0 +1,16 @@
+package com.gafur.homework.week_3.annotations;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class Tester {
+	public boolean testAll(String[] classes) {
+		for(String item : classes){
+			Method[] methods = item.getClass().getDeclaredMethods();
+			
+			for()
+			
+		}
+		return false;
+	}
+}

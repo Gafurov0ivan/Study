@@ -10,32 +10,38 @@ public class MyArrayList<T> implements List<T> {
 	private static int size = 0;
 	private Object[] array;
 
+	private static final Object[] DEFAULTCAPACITY = {};
+	private static final Object[] EMPTY = {};
+
 	public MyArrayList() {
-		this.array = new Object[16];
+		array = DEFAULTCAPACITY;
 	}
 
 	public MyArrayList(int initialCapacity) {
 		if (initialCapacity > 0) {
-			this.array = new Object[initialCapacity];
-		} else if(initialCapacity == 0) {
-			this.array = null;
-		}
-		else{
-			this.array = new Object[16];
+			array = new Object[initialCapacity];
+		} else if (initialCapacity == 0) {
+			array = EMPTY;
+		} else {
+			throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
 		}
 	}
 
 	public void trimToSize() {
 		Object[] newArray = new Object[size * 2];
-		System.arraycopy(array, 0, newArray, 0, size);
+		System.arraycopy(array, 0, newArray, 0, array.length);
 		array = newArray;
 		size = array.length;
 	}
 
 	private void ensureCapacity(int minCapacity) {
-		if (size < minCapacity) {
-			Object[] newArray = new Object[minCapacity*2];
-			System.arraycopy(array, 0, newArray, 0, size);
+		if (size == 0) {
+			minCapacity = Math.max(0, minCapacity);
+		}
+
+		if (minCapacity - size > 0) {
+			Object[] newArray = new Object[minCapacity];
+			System.arraycopy(array, 0, newArray, 0, array.length);
 			array = newArray;
 			size = array.length;
 		}
@@ -43,15 +49,17 @@ public class MyArrayList<T> implements List<T> {
 
 	public boolean add(T t) {
 		ensureCapacity(size + 1);
-		array[size++] = t;
+		array[size - 1] = t;
 		return true;
 	}
 
 	public void add(int index, T t) {
 		ensureCapacity(size + 1);
-		System.arraycopy(array, index, array, index + 1, size - index);
+		Object[] newArray = new Object[size];
+		System.arraycopy(array, 0, newArray, 0, index);
+		System.arraycopy(array, index + 1, newArray, index + 1, size - index - 1);
+		array = newArray;
 		array[index] = t;
-		size++;
 	}
 
 	public boolean addAll(Collection<? extends T> collection) {
@@ -60,7 +68,6 @@ public class MyArrayList<T> implements List<T> {
 		if (collectionArraySize != 0) {
 			ensureCapacity(size + collectionArraySize);
 			System.arraycopy(collectionArray, 0, array, size, collectionArraySize);
-			size += collectionArraySize;
 			return true;
 		} else {
 			return false;
@@ -77,7 +84,6 @@ public class MyArrayList<T> implements List<T> {
 				System.arraycopy(array, index, array, index + collectionArraySize, moveIndex);
 			}
 			System.arraycopy(collectionArray, 0, array, index, collectionArraySize);
-			size += collectionArraySize;
 			return true;
 		} else {
 			return false;
@@ -92,7 +98,7 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean contains(Object o) {
-		if(array == null){
+		if (array == null) {
 			return false;
 		}
 		if (o == null) {
@@ -122,10 +128,8 @@ public class MyArrayList<T> implements List<T> {
 				}
 			} else {
 				for (int j = 0; j < size; j++) {
-					for (Object o : array) {
-						if (array[i].equals(o)) {
-							return true;
-						}
+					if (array[j].equals(collArray[i])) {
+						return true;
 					}
 				}
 			}
@@ -135,8 +139,10 @@ public class MyArrayList<T> implements List<T> {
 
 	@SuppressWarnings("unchecked")
 	public T get(int index) {
-		T t = (T) array[index];
-		return t;
+		if (index >= size) {
+			throw new IndexOutOfBoundsException("Uncorrect index");
+		}
+		return (T) array[index];
 	}
 
 	public int indexOf(Object o) {
@@ -183,9 +189,9 @@ public class MyArrayList<T> implements List<T> {
 				if (array[i] == null) {
 					Object[] newArray = new Object[size - 1];
 					System.arraycopy(array, 0, newArray, 0, i);
-					System.arraycopy(array, i + 1, newArray, i, size - i - 1);
-					this.array = newArray;
-					size--;
+					System.arraycopy(array, i + 1, newArray, i, array.length - i - 1);
+					array = newArray;
+					size = array.length;
 					return true;
 				}
 			}
@@ -194,9 +200,9 @@ public class MyArrayList<T> implements List<T> {
 				if (o.equals(array[i])) {
 					Object[] newArray = new Object[size - 1];
 					System.arraycopy(array, 0, newArray, 0, i);
-					System.arraycopy(array, i + 1, newArray, i, size - i - 1);
-					this.array = newArray;
-					size--;
+					System.arraycopy(array, i + 1, newArray, i, array.length - i - 1);
+					array = newArray;
+					size = array.length;
 					return true;
 				}
 			}
@@ -217,7 +223,7 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean removeAll(Collection<?> collection) {
-		if(collection == null){
+		if (collection == null) {
 			return false;
 		}
 		for (int i = 0; i < size; i++) {
@@ -230,9 +236,9 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean retainAll(Collection<?> collection) {
-//		if(collection == null){
-//			return false;
-//		}
+		// if(collection == null){
+		// return false;
+		// }
 		Object[] newArray = new Object[size];
 		int index = 0;
 		for (int i = 0; i < size; i++) {
@@ -267,15 +273,15 @@ public class MyArrayList<T> implements List<T> {
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] arr) {
 		if (arr.length < size)
-            return (T[]) Arrays.copyOf(array, size, arr.getClass());
-        System.arraycopy(array, 0, arr, 0, size);
-        if (arr.length > size)
-            arr[size] = null;
-        return arr;
+			return (T[]) Arrays.copyOf(array, size, arr.getClass());
+		System.arraycopy(array, 0, arr, 0, size);
+		if (arr.length > size)
+			arr[size] = null;
+		return arr;
 	}
 
 	public List subList(int a, int b) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("All is ok");
 	}
 
 	public Iterator iterator() {

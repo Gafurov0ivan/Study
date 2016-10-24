@@ -7,8 +7,8 @@ public class Start {
 				"com.gafur.homework.week_3.annotations.Beta", 
 				"com.gafur.homework.week_3.annotations.Beta" };
 
-		Tester tester = new Tester();
-		tester.testAll(classes);
+//		Tester tester = new Tester();
+//		tester.testAll(classes);
 
 	}
 }

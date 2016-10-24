@@ -4,7 +4,7 @@ public class Alpha {
 
 	@Test
 	public boolean diapason(int item) {
-		if (item >= 8 && item <= 14) {
+		if (item >= 8 && item <= 13) {
 			return true;
 		}
 		return false;

@@ -1,10 +1,10 @@
 package com.gafur.homework.week_3.annotations;
 
-public class Gamma {
+public class Alpha {
 
 	@Test
 	public boolean diapason(int item) {
-		if (item > 30 && item <= 100) {
+		if (item >= 8 && item <= 14) {
 			return true;
 		}
 		return false;

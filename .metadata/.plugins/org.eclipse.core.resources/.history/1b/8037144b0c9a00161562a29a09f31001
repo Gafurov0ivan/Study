@@ -1,0 +1,50 @@
+package com.gafur.homework.week_3.annotations;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.annotation.PostConstruct;
+
+public class Tester {
+
+	public void testAll(String[] classes) {
+
+		for (String item : classes) {
+			Method[] methods = item.getClass().getDeclaredMethods();
+			for (Method method : methods) {
+//				System.out.println(method.invoke(null, 15));
+//				Test test = method.getAnnotation(Test.class);
+//				if (test != null) {
+//					boolean answer = test.methodReturn();
+//					
+					try {
+						Class<?> c = Class.forName(item);
+						Object newObject = c.newInstance();
+						 Annotation[] annotations = method.getDeclaredAnnotations();
+				            for (Annotation annotation : annotations) {
+				                if(annotation instanceof Test){
+				                    method.invoke(newObject, 15);
+				                }
+				            }
+//						method.setAccessible(true);
+//						method.invoke(newObject, 15);
+					} catch (SecurityException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					} catch (InstantiationException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+
+

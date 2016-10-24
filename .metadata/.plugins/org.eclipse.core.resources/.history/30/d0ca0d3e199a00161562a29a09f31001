@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 public class Tester {
 
 	public void testAll(String[] classes) {
+
 		for (String item : classes) {
 			try {
 				Class<?> currentClass = Class.forName(item);

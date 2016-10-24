@@ -6,7 +6,7 @@ public class Start {
 		String[] classes = { 
 				"com.gafur.homework.week_3.annotations.Alpha",
 				"com.gafur.homework.week_3.annotations.Beta", 
-				"com.gafur.homework.week_3.annotations.Gamma" };
+				"com.gafur.homework.week_3.annotations.Beta" };
 
 		Tester tester = new Tester();
 		tester.testAll(classes);

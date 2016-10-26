@@ -11,13 +11,14 @@ public class Test {
 		list1.add(null);
 		list1.add(-212323);
 		list1.add(212323);
-
 		
-		list1.remove(1);
+		Object[] arr = new Object[0];
 		
+		arr = list1.toArray(arr);
 		
-			System.out.println(list1.get(1));
+		for(Object value : arr){
+			System.out.println(value);
+		}
 
 	}
-
 }

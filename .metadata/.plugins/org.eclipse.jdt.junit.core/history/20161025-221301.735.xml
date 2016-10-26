@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ListTest" project="ListTest" tests="4" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="ru.itis.test.ListTest" incomplete="true">
+    <testcase name="order1_smokeTest" classname="ru.itis.test.ListTest" time="0.005"/>
+    <testcase name="order2_detailedRandomTestListModifyMethods" classname="ru.itis.test.ListTest" incomplete="true"/>
+    <testcase name="order3_detailedRandomTestListGetMethods" classname="ru.itis.test.ListTest" incomplete="true"/>
+    <testcase name="order4_performanceRemoveAllTest" classname="ru.itis.test.ListTest" incomplete="true"/>
+  </testsuite>
+</testrun>

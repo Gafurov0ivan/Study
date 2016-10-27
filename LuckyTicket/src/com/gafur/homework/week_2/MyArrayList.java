@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class MyArrayList<T> implements List<T> {
+<<<<<<< HEAD
+=======
+	private int size;
+	private Object[] array;
+
+>>>>>>> origin/master
 	private static final Object[] DEFAULTCAPACITY = {};
 	private static final Object[] EMPTY = {};
 	private int size;
@@ -118,9 +124,23 @@ public class MyArrayList<T> implements List<T> {
 		int containsCount = 0;
 		Object[] collArray = collection.toArray();
 		for (int i = 0; i < collArray.length; i++) {
+<<<<<<< HEAD
 			for (int j = 0; j < size; j++) {
 				if (collArray[i].equals(array[j]) || (collArray[i] == null && array[j] == null)) {
 					containsCount++;
+=======
+			if (collArray[i] == null) {
+				for (int j = 0; j < size; j++) {
+					if (array[j] != null) {
+						containsCount++;
+					}
+				}
+			} else {
+				for (int j = 0; j < size; j++) {
+					if (collArray[i].equals(array[j])) {
+						containsCount++;
+					}
+>>>>>>> origin/master
 				}
 			}
 		}
@@ -221,12 +241,18 @@ public class MyArrayList<T> implements List<T> {
 		}
 		Object[] newArray = array;
 		for (int i = 0; i < size; i++) {
+<<<<<<< HEAD
 			if ((collection.contains(newArray[i])) || (collection.contains(null) && newArray[i] == null)) {
 				Object obj = newArray[i];
 				remove(obj);
+=======
+			if (collection.contains(array[i])) {
+				remove(i);
+				return true;
+>>>>>>> origin/master
 			}
 		}
-		return true;
+		return false;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -235,6 +261,7 @@ public class MyArrayList<T> implements List<T> {
 			return false;
 		}
 		if (collection.size() == 0) {
+<<<<<<< HEAD
 			array = EMPTY;
 			return true;
 		}
@@ -246,6 +273,30 @@ public class MyArrayList<T> implements List<T> {
 				add((T) newArray[i]);
 			}
 		}
+=======
+			array = null;
+			return true;
+		}
+
+		Object[] coll = collection.toArray();
+
+		for (int i = 0; i < coll.length; i++) {
+			for (int j = 0; j < size; j++)
+				if (coll[i].equals(array[j])) {
+					remove(j);
+				}
+		}
+
+		// Object[] newArray = new Object[size];
+		// int index = 0;
+		// for (int i = 0; i < size; i++) {
+		// if (collection.contains(array[i])) {
+		// newArray[index] = array[i];
+		// index++;
+		// }
+		// }
+		// array = newArray;
+>>>>>>> origin/master
 		return true;
 	}
 

@@ -1,17 +1,15 @@
 package com.gafur.homework.week_2;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 public class MyArrayList<T> implements List<T> {
-	private static int size = 0;
-	private Object[] array;
-
 	private static final Object[] DEFAULTCAPACITY = {};
 	private static final Object[] EMPTY = {};
+	private int size;
+	private Object[] array;
 
 	public MyArrayList() {
 		array = DEFAULTCAPACITY;
@@ -38,7 +36,6 @@ public class MyArrayList<T> implements List<T> {
 		if (size == 0) {
 			minCapacity = Math.max(0, minCapacity);
 		}
-
 		if (minCapacity - size > 0) {
 			Object[] newArray = new Object[minCapacity];
 			System.arraycopy(array, 0, newArray, 0, array.length);
@@ -109,7 +106,7 @@ public class MyArrayList<T> implements List<T> {
 			}
 		} else {
 			for (int i = 0; i < size; i++) {
-				if (array[i].equals(o)) {
+				if (o.equals(array[i])) {
 					return true;
 				}
 			}
@@ -118,23 +115,16 @@ public class MyArrayList<T> implements List<T> {
 	}
 
 	public boolean containsAll(Collection<?> collection) {
+		int containsCount = 0;
 		Object[] collArray = collection.toArray();
 		for (int i = 0; i < collArray.length; i++) {
-			if (collArray[i] == null) {
-				for (int j = 0; j < size; j++) {
-					if (array[j] == null) {
-						return true;
-					}
-				}
-			} else {
-				for (int j = 0; j < size; j++) {
-					if (collArray[i].equals(array[j])) {
-						return true;
-					}
+			for (int j = 0; j < size; j++) {
+				if (collArray[i].equals(array[j]) || (collArray[i] == null && array[j] == null)) {
+					containsCount++;
 				}
 			}
 		}
-		return false;
+		return containsCount == collArray.length ? true : false;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -217,7 +207,7 @@ public class MyArrayList<T> implements List<T> {
 		Object[] newArray = new Object[size - 1];
 		System.arraycopy(array, 0, newArray, 0, index);
 		System.arraycopy(array, index + 1, newArray, index, size - index - 1);
-		this.array = newArray;
+		array = newArray;
 		size--;
 		return oldValue;
 	}
@@ -226,28 +216,36 @@ public class MyArrayList<T> implements List<T> {
 		if (collection == null) {
 			return false;
 		}
+		if (collection.size() == 0) {
+			return false;
+		}
+		Object[] newArray = array;
 		for (int i = 0; i < size; i++) {
-			if (collection.contains(array[i])) {
-				remove(i);
-				size--;
+			if ((collection.contains(newArray[i])) || (collection.contains(null) && newArray[i] == null)) {
+				Object obj = newArray[i];
+				remove(obj);
 			}
 		}
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean retainAll(Collection<?> collection) {
 		if (collection == null) {
 			return false;
 		}
-		Object[] newArray = new Object[size];
-		int index = 0;
-		for (int i = 0; i < size; i++) {
-			if (collection.contains(array[i])) {
-				newArray[index] = array[i];
-				index++;
+		if (collection.size() == 0) {
+			array = EMPTY;
+			return true;
+		}
+		Object[] newArray = array;
+		array = EMPTY;
+		size = 0;
+		for (int i = 0; i < newArray.length; i++) {
+			if ((collection.contains(newArray[i])) || ((collection.contains(null) && newArray[i] == null))) {
+				add((T) newArray[i]);
 			}
 		}
-		array = newArray;
 		return true;
 	}
 
@@ -270,19 +268,25 @@ public class MyArrayList<T> implements List<T> {
 
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] arr) {
-		Object[] newArray = new Object[size];
-		arr = (T[]) newArray;
+		if (arr.length < size) {
+			Object[] newArray = new Object[size];
+			arr = (T[]) newArray;
+			return arr;
+		}
 		System.arraycopy(array, 0, arr, 0, size);
+		if (arr.length > size)
+			arr[size] = null;
 		return arr;
 	}
 
 	public List subList(int a, int b) {
+		if (a > size || b > size) {
+			throw new IndexOutOfBoundsException();
+		}
 		List<T> list = new MyArrayList<>();
 		for (int i = a; i < b; i++) {
-			T obj = list.get(i);
-			for (int j = 0;; j++) {
-				list.add(obj);
-			}
+			T obj = get(i);
+			list.add(obj);
 		}
 		return list;
 	}

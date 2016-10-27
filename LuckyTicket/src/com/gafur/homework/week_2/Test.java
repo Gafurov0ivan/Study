@@ -11,12 +11,12 @@ public class Test {
 		list1.add(null);
 		list1.add(-212323);
 		list1.add(212323);
+		
+
 
 		
-		list1.remove(1);
 		
-		
-			System.out.println(list1.get(1));
+			System.out.println(list1.get(0));
 
 	}
 

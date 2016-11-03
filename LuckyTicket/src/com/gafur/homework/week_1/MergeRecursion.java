@@ -22,12 +22,14 @@ public class MergeRecursion {
 			for (int i = 0; i < newArrayOne.length; i++) {
 				newArrayOne[i] = array[i];
 			}
+			mergeSort(newArrayOne);
 			
 			for (int j = array.length / 2, i = 0; i < newArrayTwo.length; j++, i++) {
 				newArrayTwo[i] = array[j];
 			}
-			mergeSort(newArrayOne);
 			mergeSort(newArrayTwo);
+
+			
 			array = sort(array, newArrayOne, newArrayTwo);
 		
 		return array;

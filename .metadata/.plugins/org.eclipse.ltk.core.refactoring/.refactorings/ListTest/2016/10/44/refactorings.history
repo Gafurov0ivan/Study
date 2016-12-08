@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;MyArrayList.java&apos; to &apos;LuckyTicket/src/com.gafur.homework.week_2&apos;&#x0D;&#x0A;- Original project: &apos;ListTest&apos;&#x0D;&#x0A;- Destination element: &apos;LuckyTicket/src/com.gafur.homework.week_2&apos;&#x0D;&#x0A;- Original element: &apos;ru.itis.test.MyArrayList.java&apos;" description="Copy compilation unit" destination="=LuckyTicket/src&lt;com.gafur.homework.week_2" element1="/src&lt;ru.itis.test{MyArrayList.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1477512459489" units="1" version="1.0"/>
-</session>

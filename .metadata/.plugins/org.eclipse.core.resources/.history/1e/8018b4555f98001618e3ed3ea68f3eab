@@ -1,9 +1,0 @@
-package com.gafur.homework.week_3.annotations;
-
-public class Alpha {
-	
-	public void (){
-		
-	}
-
-}

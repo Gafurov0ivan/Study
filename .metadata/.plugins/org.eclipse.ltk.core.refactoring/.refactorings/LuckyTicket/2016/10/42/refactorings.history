@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete element from project &apos;LuckyTicket&apos;&#x0D;&#x0A;- Original project: &apos;LuckyTicket&apos;&#x0D;&#x0A;- Original element: &apos;com.gafur.homework.week_1.MergeSort.java&apos;" description="Delete element" element1="/src&lt;com.gafur.homework.week_1{MergeSort.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1476292382739" subPackages="false" version="1.0"/>
-</session>

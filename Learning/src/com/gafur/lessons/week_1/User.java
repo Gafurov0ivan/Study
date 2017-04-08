@@ -5,13 +5,6 @@ package com.gafur.lessons.week_1;
  * @since 10.10.2016
  */
 public class User {
-    // ��� �� �������
-    // String user;
-    // String password;
-    // int age;
-
-    // ������ � ����� ������ ������ ������ ���� �����
-    // ���� ����� ���������� Java Bean, �� ���� ���� ������ � �������� ������ � ������
 
     public static final String DEFAULT = "default";
     private long id;
@@ -21,22 +14,17 @@ public class User {
 
     public User() {
         setId(0);
-//		username = "default"; ��� �� �������
         username = DEFAULT;
     }
 
     public User(long id, String username, String password) {
         this.setId(id);
         this.username = username;
-//		this - ��� ������, ������� �� ������
-
     }
 
     public User(long id, String username, String password, int age) {
         this(id, username, password);
         this.age = age;
-//		� ������������ ������� ������, ����� �� ����������� ���
-
     }
 
     public String getUser() {
@@ -70,5 +58,4 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
-
 }

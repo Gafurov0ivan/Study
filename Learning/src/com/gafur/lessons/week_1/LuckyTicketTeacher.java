@@ -19,24 +19,6 @@ public class LuckyTicketTeacher {
                                     count++;
                                 }
         System.out.println(count);
-        // 1-�� ���������� �� ���������� ����� �� �����
-        // 2-�� ������� ��� �������� ��������� ������ ����� � ����� ������� �
-        // �������� � �������(������� �������� �������� 1, 2 � �.�.)
-        // 3 -�� ������������� ����������������
-        // ����� ������
-//		int[] count1 = new int[28];
-//
-//		for (int j0 = 0; j0 < 10; j0++)
-//			for (int j1 = 0; j1 < 10; j0++)
-//				for (int j2 = 0; j2 < 10; j0++)
-//
-//					count1 [j0 + j1 + j2]++;
-//	
-//	int sum = 0;
-//	for(int i = 0; i < count1.length; i++){
-//		sum = sum + count1[i] * count1[i];
-//	}
-//	System.out.println(sum);
     }
 }
 

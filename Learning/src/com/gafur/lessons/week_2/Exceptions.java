@@ -11,15 +11,11 @@ public class Exceptions {
     }
 
     public static void main(String[] args) {
-
-//		��������� ����������
         try {
             m(10);
-//			��������� ����������
         } catch (MyException | MyException2 e) {
             e.printStackTrace();
         } finally {
-//			��������� ����������
         }
     }
 }
